@@ -9,7 +9,7 @@ function LoginPage() {
   const users = [
     { email: "Ayushsharma1153@gmail.com", password: "helloworld" },
     { email: "William@gmail.com", password: "ass123" },
-    { email: "kamC@gmail.com", password: "adiba" },
+    { email: "kam@gmail.com", password: "adiba" },
    
   ];
 
