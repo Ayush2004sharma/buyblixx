@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Ayush2004sharma.github.io/buyblixx.git",
+  "homepage": "https://Ayush2004sharma.github.io/buyblixx",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
