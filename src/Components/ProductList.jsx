@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
+import WishList from "./WishList"; // We will render WishList component on the same page
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -7,7 +8,7 @@ const ProductList = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [wishlist, setWishlist] = useState([]);
-  const productsPerPage = 9; // Show 6 products per page
+  const productsPerPage = 9;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -29,12 +30,10 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
-  const handleClick = () => {
-  };
   const handleAddToWishlist = (product) => {
     setWishlist((prevWishlist) => [...prevWishlist, product]);
-    alert(`${product.title} added to wishlist`);
   };
+
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -47,19 +46,15 @@ const ProductList = () => {
     }
   };
 
-  if (loading) return <div></div>;
+  if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
   return (
     <div>
-     
       <div className="grid grid-cols-3 gap-4 p-4">
         {currentProducts.map((product) => (
-          <div key={product.id} onClick={handleClick}>
-            <Card 
-              product={product} 
-              onAddToWishlist={handleAddToWishlist}
-            />
+          <div key={product.id}>
+            <Card product={product} onAddToWishlist={handleAddToWishlist} />
           </div>
         ))}
       </div>
@@ -81,14 +76,8 @@ const ProductList = () => {
           Next
         </button>
       </div>
-      <div className="mt-4">
-        <h3 className="font-bold text-lg">Wishlist</h3>
-        <ul>
-          {wishlist.map((item) => (
-            <li key={item.id}>{item.title}</li>
-          ))}
-        </ul>
-      </div>
+
+
     </div>
   );
 };
