@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import WishList from "./WishList"; // We will render WishList component on the same page
+import Loader from "./Loader";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -46,7 +47,7 @@ const ProductList = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>{<Loader/>}</div>;
   if (error) return <div>{error}</div>;
 
   return (
